@@ -1,0 +1,14 @@
+
+    <section class="ad-box" ng-include="template.ad" ng-hide="adClicked" ng-init="adClicked = false"></section>
+    <section class="left-box">
+        <!--header class="publish-panel"  ng-include="template.publish"></header-->
+        <section class="content-panel" ng-include="template.content" ng-controller="TabCtl"></section>
+    </section>
+    <aside class="right-box">
+        <section id="UserInfoPanel" ng-include="template.userinfo"></section>
+        <section id="UserGroupPanel" ng-include="template.usergroup"></section>
+        <section id="RecommondFodPanel"></section>
+        <section id="RecommondPricePanel"></section>
+        <section id="RecommondCookTalantPanel"></section>
+    </aside>
+

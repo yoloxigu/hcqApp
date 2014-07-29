@@ -1,0 +1,30 @@
+.publish-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: rgba(3, 3 , 3, 0.1);
+  width: 100%;
+  height: 100%;
+  .subject-dialog {
+    width: 600px;
+    height: auto;
+    background-color: #ffffff;
+    position: relative;
+    top: 80px;
+    margin: 0 auto;
+    padding: 15px;
+
+    i {
+      float: right;
+      display: inline-block;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    @import "panel/publish_subject_dialog";
+
+  }
+}

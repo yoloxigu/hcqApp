@@ -1,0 +1,58 @@
+@import "../../browork/components/global";
+@import "../mixin";
+#UserInfoPanel {
+  background: $backgroundColor;
+  @include framePanelBorder();
+
+  dl {
+    position: relative;
+    #UserBackgroundPic {
+      background-color: #ececec;
+      display: block;
+      width: 240px;
+      height: 82px;
+    }
+    dd{}
+
+    #UserPhoto {
+      position: absolute;
+      top: 50px;
+      left: 15px;
+    }
+
+    #UserName {
+      margin-left: 95px;
+    }
+
+    #UserIcon {
+      margin-top: 40px;
+      margin-left: 15px;
+      height: 15px;
+
+    }
+
+    #UserGroupCount {
+      margin: 15px 15px 10px 15px;
+
+      ul {
+        li {
+          display: inline-block;
+          margin: 0;
+        }
+      }
+      span {
+        display: block;
+        width: 60px;
+        height: 16px;
+        font-size: 14px;
+      }
+
+      small {
+        border-left: 1px solid #e3e3e3;
+        height: 22px;
+        display: block;
+      }
+    }
+
+  }
+}

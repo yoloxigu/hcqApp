@@ -1,0 +1,31 @@
+@mixin framePanelBorder($width: 1px, $borderStyle: solid, $color: #e3e3e3) {
+  -moz-border: $width $borderStyle $color;
+  -webkit-border: $width $borderStyle $color;
+  -ms-border: $width $borderStyle $color;
+  -o-border: $width $borderStyle $color;
+  border: $width $borderStyle $color;
+}
+
+@mixin framePanelRadius($width: 6px) {
+  -moz-border-radius: $width;
+  -webkit-border-radius: $width;
+  -ms-border-radius: $width;
+  -o-border-radius: $width;
+  border-radius: $width;
+}
+
+@mixin float-left($topSize: 0, $rightSize: 0, $bottomSize: 0, $leftSize: 0) {
+  float: left;
+  margin-top: $topSize;
+  margin-right: $rightSize;
+  margin-bottom: $bottomSize;
+  margin-left: $leftSize;
+}
+
+@mixin float-right($topSize: 0, $rightSize: 0, $bottomSize: 0, $leftSize: 0) {
+  float: right;
+  margin-top: $topSize;
+  margin-right: $rightSize;
+  margin-bottom: $bottomSize;
+  margin-left: $leftSize;
+}

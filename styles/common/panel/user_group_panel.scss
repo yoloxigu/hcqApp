@@ -1,0 +1,111 @@
+@import "../../browork/components/global";
+@import "../mixin";
+#UserGroupPanel {
+  background: $backgroundColor;
+  @include framePanelBorder();
+
+
+  margin-top: 10px;
+
+  dl {
+    dt {
+      border-bottom: 1px  solid #e3e3e3;
+      height: 50px;
+      padding: 0 15px;
+      h2 {
+        font-size: 14px;
+        font-weight: normal;
+        height: 50px;
+        line-height: 50px;
+        margin-top: 10;
+        padding: 0;
+      }
+
+      a {
+        height: 50px;
+        line-height: 50px;
+      }
+    }
+
+    .float-right {
+      @include float-right;
+    }
+  }
+
+  dl:first-of-type {
+    border-bottom: 1px  solid #e3e3e3;
+    padding-top: 10px;
+    dd {
+      padding: 0 15px;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+
+  dl:nth-of-type(2) {
+    dt {
+      border-top: 0px solid #e3e3e3;
+      h2 {
+        margin: 0;
+      }
+    }
+
+    dd {
+      padding: 0 15px;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+
+  dl:nth-of-type(3) {
+    padding-bottom: 10px;
+    dt {
+      border-top: 1px solid #e3e3e3;
+      h2 {
+        margin: 0;
+      }
+    }
+    dd {
+      padding: 0;
+      margin: 10px 0 0 0;
+      display: inline-block;
+      span {
+        width: 74px;
+        display: block;
+      }
+    }
+  }
+
+  dl:nth-of-type(4) {
+    dt {
+      border-top: 1px solid #e3e3e3;
+      h2 {
+        margin: 0;
+      }
+    }
+    dd {
+      padding: 0 15px;
+      ul {
+        list-style-type: none;
+        padding: 10px 0;
+
+        li {
+        }
+
+        .group-pic {
+          float: left;
+        }
+        .group-name,.group-level,.group-btn {
+          display: inline-block;
+          margin-left: 10px;
+          height: 25px;
+          line-height: 25px;
+        }
+        .group-btn button {
+          height: 25px;
+          width: 67px;
+        }
+      }
+    }
+  }
+}

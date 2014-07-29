@@ -1,0 +1,10 @@
+<div class="ad-button">
+    <span class="close-ad-box icon-remove" ng-click="adClicked = true"></span>
+    <span class="change-ad-content">换一换</span>
+</div>
+<div class="ad-photo">
+    <span ng-repeat="ad in ads">
+        <img ng-src="{{ad.restaurantPhoto}}" style="width: 162px; height: 121px;">
+        <span>{{ad.restaurantName}}</span>
+    </span>
+</div>

@@ -1,0 +1,40 @@
+html {
+  //background: linear-gradient(#bbb,#efefef);
+}
+body {
+  //background-image: url(../images/background.jpg);
+  //background-repeat: no-repeat;
+}
+.container{
+  margin: 0 auto;
+  padding-top: 80px;
+}
+
+@import "browork";
+@import "common/header";
+@import "common/publish";
+
+.middle-box{
+  min-width: 650px;
+  margin: 30px auto;
+  @include grid-row();
+
+  @import "common/ad";
+
+  .left-box{
+    float: left;
+    @include grid-column(9);
+    @import "common/middle-left-box";
+    padding-right: 5px;
+
+  }
+
+  .right-box{
+    float: right;
+    @include grid-column(3);
+    @import "common/middle-right-box";
+    padding-left: 5px;
+  }
+}
+
+@import "common/footer";

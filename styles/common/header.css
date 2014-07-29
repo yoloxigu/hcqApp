@@ -1,0 +1,133 @@
+html, body, table, dl, dt, dd, ul, ol, li, div {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+a, span {
+  color: #000000;
+  text-align: center;
+  text-decoration: none; }
+
+p {
+  font-size: 14px; }
+
+#Header {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #e3e3e3;
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 9999;
+  top: 0; }
+  #Header .nav {
+    width: auto;
+    margin-left: -convert-to-rem(30, 16px)/2;
+    margin-right: -convert-to-rem(30, 16px)/2;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: none;
+    max-width: 980px;
+    min-width: 650px;
+    height: 50px;
+    margin: 0 auto;
+    color: #292929; }
+    #Header .nav:before, #Header .nav:after {
+      content: " ";
+      display: table; }
+    #Header .nav:after {
+      clear: both; }
+    #Header .nav ul {
+      background: greenyellow;
+      display: inline-block; }
+    #Header .nav .left-nav {
+      padding-left: convert-to-rem(30, 16px)/2;
+      padding-right: convert-to-rem(30, 16px)/2;
+      width: 75%;
+      float: left;
+      list-style-type: none; }
+      #Header .nav .left-nav li {
+        display: inline-block;
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        width: 70px;
+        text-align: center; }
+        #Header .nav .left-nav li a {
+          padding-top: 0px;
+          color: #292929;
+          font-size: 12px; }
+        #Header .nav .left-nav li #logo {
+          font-size: 14px;
+          font-weight: bolder; }
+        #Header .nav .left-nav li .navVisited {
+          border-bottom: 3px solid #9aab20; }
+    #Header .nav .right-nav {
+      padding-left: convert-to-rem(30, 16px)/2;
+      padding-right: convert-to-rem(30, 16px)/2;
+      width: 25%;
+      float: left;
+      list-style-type: none;
+      text-align: right;
+      height: 50px;
+      line-height: 50px;
+      background: red; }
+      #Header .nav .right-nav li {
+        float: right;
+        display: inline-block;
+        height: 50px;
+        line-height: 50px; }
+        #Header .nav .right-nav li:hover > .nav-dropdown {
+          display: block;
+          position: static !important;
+          height: auto;
+          width: auto;
+          overflow: visible;
+          clip: auto;
+          position: absolute !important; }
+        #Header .nav .right-nav li .nav-dropdown {
+          display: block;
+          position: absolute !important;
+          height: 1px;
+          width: 1px;
+          overflow: hidden;
+          clip: rect(1px, 1px, 1px, 1px);
+          background: transparent;
+          border: 1px solid #e3e3e3; }
+          #Header .nav .right-nav li .nav-dropdown li {
+            width: 100px;
+            height: 30px; }
+            #Header .nav .right-nav li .nav-dropdown li a {
+              margin: 0;
+              padding: 0;
+              display: block;
+              color: black;
+              height: 30px;
+              line-height: 30px;
+              background: #ffffff; }
+              #Header .nav .right-nav li .nav-dropdown li a:hover {
+                background: #e3e3e3; }
+      #Header .nav .right-nav #navNotice {
+        background: blue;
+        width: 80px;
+        text-align: center;
+        position: relative; }
+        #Header .nav .right-nav #navNotice .nav-dropdown {
+          position: absolute;
+          top: 50px;
+          right: 0;
+          z-index: 9999; }
+      #Header .nav .right-nav #navCollection {
+        background: green;
+        position: relative;
+        width: 120px;
+        text-align: center; }
+        #Header .nav .right-nav #navCollection .nav-dropdown {
+          position: absolute;
+          top: 50px;
+          right: 0;
+          z-index: 9999; }

@@ -1,0 +1,59 @@
+/*
+Syntax error: Colors must have either three or six digits: '#e3e3e3e3'
+        on line 1 of mixin.scss
+
+1: @mixin framePanelBorder($width: 1px, $borderStyle: solid, $color: #e3e3e3e3) {
+2:   -moz-border: $width $borderStyle $color;
+3:   -webkit-border: $width $borderStyle $color;
+4:   -ms-border: $width $borderStyle $color;
+5:   -o-border: $width $borderStyle $color;
+6:   border: $width $borderStyle $color;
+
+Backtrace:
+mixin.scss:1
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/lexer.rb:289:in `color'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/lexer.rb:245:in `token'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/lexer.rb:225:in `read_token'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/lexer.rb:176:in `peek'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:487:in `try_tok'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:228:in `unary_plus'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `times_div_or_mod'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `plus_or_minus'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `relational'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `eq_or_neq'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `and_expr'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `or_expr'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:298:in `space'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:477:in `assert_expr'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:358:in `block in defn_arglist!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:354:in `loop'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:354:in `defn_arglist!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/script/parser.rb:104:in `parse_mixin_definition_arglist'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:1022:in `sass_script'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:184:in `mixin_directive'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:174:in `special_directive'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:146:in `directive'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:553:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:543:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:82:in `stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:27:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/engine.rb:342:in `_to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/engine.rb:315:in `_render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/engine.rb:262:in `render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:362:in `update_stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/exec.rb:443:in `watch_or_update'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/exec.rb:326:in `process_result'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/exec.rb:41:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/exec.rb:21:in `parse!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/bin/scss:13:in `<top (required)>'
+/usr/bin/scss:23:in `load'
+/usr/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Colors must have either three or six digits: '#e3e3e3e3'\A         on line 1 of mixin.scss\A \A 1: @mixin framePanelBorder($width: 1px, $borderStyle: solid, $color: #e3e3e3e3) {\A 2:   -moz-border: $width $borderStyle $color;\A 3:   -webkit-border: $width $borderStyle $color;\A 4:   -ms-border: $width $borderStyle $color;\A 5:   -o-border: $width $borderStyle $color;\A 6:   border: $width $borderStyle $color;"; }

@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lte IE 8]>
+    <script src="scripts/common/angular_for_IE.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body ng-app="haochiquanApp" ng-controller="TemplateCtl">
+    <div class="container" ng-controller="PanelsCtl">
+        <header id="Header" ng-include="template.header">
+        </header>
+        <section class="middle-box" ng-view="" ng-controole="MainCtrl"></section>
+        <footer id="Footer"  ng-include="template.footer"></footer>
+        <div ng-show="publishDialog" ng-include="template.publish_subject_dialog" class="publish-box"></div>
+    </div>
+
+
+    <!-- bower:js -->
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- endbower -->
+
+
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/templateCtl.js"></script>
+    <script src="scripts/controllers/panelsCtl.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/tabCtl.js"></script>
+    <script src="scripts/controllers/headerCtl.js"></script>
+    <script src="scripts/controllers/publishCtl.js"></script>
+    <script src="scripts/controllers/subjectCtl.js"></script>
+    <script src="scripts/controllers/PartyCtl.js"></script>
+    <script src="scripts/controllers/menuCtl.js"></script>
+    <script src="scripts/controllers/discountCtl.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<div class="subject-dialog">
+    <i class="icon-remove float-right" ng-click="showPublishDialog('close')"></i>
+    <h1>发布话题</h1>
+    <div class="publish-top">
+        <div id="inputContent">
+            <textarea
+                    ng-model="publishContent"
+                    ng-minLength="4"
+                    name="publishBox"
+                    id="publishBox"
+                    placeholder="有好吃的都拿出来分享吧!!!"
+                    required></textarea>
+        </div>
+
+    </div>
+
+    <div class="publish-bottom">
+        <ul ng-init="{openFaceDialog: false, openPicDialog: false}">
+            <li>
+                <a class="publishFace" ng-click="openFaceDialog = !openFaceDialog;openPicDialog = false;">
+                    <i></i>
+                    <span>表情</span>
+                </a>
+                <div class="pop-dialog faceDialog" ng-show="openFaceDialog">
+                    <span class="top-triangle"><em></em></span>
+                    <i class="icon-remove float-right" ng-click="openFaceDialog = !openFaceDialog"></i>
+                    <ul class="tabs">
+                        <li class="tab-title">
+                            <span>表情</span>
+                        </li>
+                    </ul>
+                    <div class="dialog-content">
+                        表情系列
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="publishPic" ng-click="openPicDialog = !openPicDialog;openFaceDialog = false;">
+                    <i></i>
+                    <span>图片</span>
+                </a>
+                <div class="pop-dialog picDialog" ng-show="openPicDialog">
+                    <span class="top-triangle"><em></em></span>
+                    <i class="icon-remove float-right" ng-click="openPicDialog = !openPicDialog"></i>
+                    <ul class="tabs">
+                        <li class="tab-title">
+                            <span>上传图片</span>
+                        </li>
+                    </ul>
+                    <div class="dialog-content">
+                        上传图片
+                    </div>
+                </div>
+            </li>
+            <li>
+                <small>|</small>
+            </li>
+            <li>
+                <label for="publishWithGroup">发布到 :</label>
+            </li>
+            <li>
+                <select id="publishWithGroup" name="publishWithGroup">
+                    <option value="1">全部圈子</option>
+                    <option value="1">我的圈子</option>
+                    <option value="2">加入的圈子</option>
+                    <option value="3">我的好友圈</option>
+                </select>
+            </li>
+            <li class="float-right">
+                <button
+                        ng-class="{enabledBtn: publishContent, disabledBtn: !publishContent}"
+                        ng-disabled="{{!publishContent}}">发    布</button>
+            </li>
+        </ul>
+    </div>
+</div>
