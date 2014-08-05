@@ -35,7 +35,4 @@ angular.module('haochiquanApp')
             restaurantPhoto: 'uploads/restaurants/u208.jpg'
         }
     ];
-
-
-
   });

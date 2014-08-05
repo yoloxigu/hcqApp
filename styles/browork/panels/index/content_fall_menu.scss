@@ -1,0 +1,28 @@
+#menuPanel {
+  ul {
+    li {
+      .pool-player-right {
+        position: relative;
+        .menu-function, .menu-helfth {
+          margin-top: 15px;
+          ul {
+            list-style-type: none;
+            li {
+              display: inline-block;
+              height: 20px;
+              line-height: 20px;
+
+            }
+          }
+        }
+
+        .content-pool-pic {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+        }
+
+      }
+    }
+  }
+}

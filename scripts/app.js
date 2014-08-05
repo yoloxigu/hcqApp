@@ -9,11 +9,11 @@
  * Main module of the application.
  */
 angular
-  .module('haochiquanApp', ["ngRoute", "ngCookies"])
+  .module('haochiquanApp', ["ngRoute", "ngCookies", "ngResource"])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/pages/index.html',
         controller: 'MainCtrl'
       })
       .otherwise({

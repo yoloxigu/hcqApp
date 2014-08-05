@@ -1,0 +1,709 @@
+<header class="content-nav">
+    <ul ng-init="tabClick(4, 0)">
+        <li ng-class="{active: tabVisited[0]}"><span ng-click="tabClick(4, 0)">话题</span></li>
+        <li ng-class="{active: tabVisited[1]}"><span ng-click="tabClick(4, 1)">饭局</span></li>
+        <li ng-class="{active: tabVisited[2]}"><span ng-click="tabClick(4, 2)">菜谱</span></li>
+        <li ng-class="{active: tabVisited[3]}"><span ng-click="tabClick(4, 3)">优惠</span></li>
+
+        <li class="search-widget">
+            <input type="text" name="searchContent" placeholder="搜索您的内容类型" />
+            <button>搜索</button>
+        </li>
+    </ul>
+</header>
+<article ng-show="tabVisited[0]" id="subjectPanel" class="allPanel">
+    <ul ng-controller="SubTabCtl" class="filter-widget">
+        <li class="grid-left">
+            <ul ng-init="visiter(4, 0)">
+                <li ng-class="{active: isVisited[0]}"><span ng-click="visiter(4, 0)">全部</span></li>
+                <li ng-class="{active: isVisited[1]}"><span ng-click="visiter(4, 1)">我的圈子</span></li>
+                <li ng-class="{active: isVisited[2]}"><span ng-click="visiter(4, 2)">我的好友圈</span></li>
+                <li ng-class="{active: isVisited[3]}"><span ng-click="visiter(4, 3)">加入的圈子</span></li>
+            </ul>
+        </li>
+        <li class="grid-right sorter-widget">
+            <span ng-click="choose(0)">时间
+                <i ng-class="{triangleUp: hadout[0],triangleDown: hadin[0]}"></i>
+
+                <ul ng-show="selected[0]" class="sorter-dropdown">
+                 <li><a href="#">全部</a></li>
+                 <li><a href="#">今天</a></li>
+                 <li><a href="#">昨天</a></li>
+                 <li><a href="#">一周前</a></li>
+                 <li><a href="#">一月前</a></li>
+                </ul>
+            </span>
+        </li>
+    </ul>
+    <ul class="loading-subject">
+        <li>有 1 个话题发布, 查看最新话题</li>
+    </ul>
+    <ul ng-controller="SubjectCtl">
+        <li class="content-pool" ng-repeat="(key, value) in subjects">
+            <div class="pool-player-left">
+                <img ng-src="{{value.playerUserPhoto}}" />
+            </div>
+            <div class="pool-player-right">
+                <dl>
+                    <dt>
+                        <span>{{value.playerUserName}}</span>
+                        <img ng-src="uploads/small-icon.png" />
+                    </dt>
+                    <dd class="content-pool-title">
+                        <h4>{{value.playerSubjectTitle}}</h4>
+                    </dd>
+                    <dd class="content-pool-text">
+                        <p>
+                            {{value.playerSubjectContent}}...
+                            <span class="expand-button">全文</span>
+                        </p>
+                    </dd>
+                    <dd class="content-pool-pic">
+                        <ul>
+                            <li ng-repeat="pic in value.playerSubjectPhoto"><img ng-src="{{pic.url}}" /></li>
+                        </ul>
+                    </dd>
+                    <dd class="content-pool-footer">
+                        <span>发布: {{value.playerPublishDateTime}}</span>
+                        <span>来自: {{value.playerFromGroup}}</span>
+                        <a
+                            ng-click="value.playerSubjectCollection = changeCollection(value.playerSubjectCollection)"
+                            href="javascript:void(0)">
+                            <ng-pluralize count="value.playerSubjectCollection"
+                                          when="{
+                                          '0': '收藏',
+                                          '1': '取消收藏'}">
+                            </ng-pluralize>
+                        </a>
+                        <a
+                            ng-click="value.playerSubjectLaudCount = changeLaud(key, subjects.length, value.playerSubjectLaudCount)"
+                            href="javascript:void(0)">赞
+                            <small class="number-bg">{{value.playerSubjectLaudCount}}</small>
+                        </a>
+                        <a ng-click="changeSubjectPanel(key, subjects.length, 'reply');" href="javascript:void(0)">转发
+                            <small class="number-bg">{{value.playerSubjectReplyCount}}</small>
+                            <span ng-show="replyItems[key]" class="top-triangle top-triangle-comment"><em></em></span>
+                        </a>
+                        <a ng-click="changeSubjectPanel(key, subjects.length, 'comment');" href="javascript:void(0)">评论
+                            <small class="number-bg">{{value.playerSubjectCommentCount}}</small>
+                            <span ng-show="commentItems[key]" class="top-triangle top-triangle-comment"><em></em></span>
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+
+            <ul
+                ng-show="commentItems[key]"
+                ng-init="{openFaceDialog: false}"
+                class="subject-panel-down">
+                <li class="subject-panel-down-top pool-subject-right">
+                    <ul>
+                        <li class="subject-widget">
+
+                            <div class="input-comment">
+                                <textarea
+                                        ng-model="publishComment"
+                                        ng-minLength="4"
+                                        name="commentBox"
+                                        id="commentBox"
+                                        placeholder="别惜言，说点什么!!!"
+                                        required></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="publishFace" ng-click="openFaceDialog = !openFaceDialog;openPicDialog = false;">
+                                <i></i>
+                                <span>表情</span>
+                            </a>
+                            <div class="pop-dialog faceDialog" ng-show="openFaceDialog">
+                                <span class="top-triangle"><em></em></span>
+                                <i class="icon-remove float-right" ng-click="openFaceDialog = !openFaceDialog"></i>
+                                <ul class="tabs">
+                                    <li class="tab-title">
+                                        <span>表情</span>
+                                    </li>
+                                </ul>
+                                <div class="dialog-content">
+                                    表情系列
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <small>|</small>
+                        </li>
+                        <li>
+                            <label>同时转发到 :</label>
+                        </li>
+                        <li>
+                            <select class="publishWithGroup" name="publishWithGroup">
+                                <option value="1">全部圈子</option>
+                                <option value="1">我的圈子</option>
+                                <option value="2">加入的圈子</option>
+                                <option value="3">我的好友圈</option>
+                            </select>
+                        </li>
+                        <li class="float-right">
+                            <button
+                                    ng-class="{enabledBtn: publishComment, disabledBtn: !publishComment}"
+                                    ng-disabled="{{!publishComment}}">评伦</button>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="subject-panel-down-pool" ng-repeat="comment in comments">
+                    <div class="pool-subject-left">
+                        <img ng-src="{{comment.playerUserPhoto}}" />
+                    </div>
+                    <div class="pool-subject-right">
+                        <dl>
+                            <dt>
+                                <span>{{comment.playerUserName}}</span>
+                                <img ng-src="uploads/small-icon.png" />
+                            </dt>
+                            <dd class="subject-pool-text">
+                                <p>
+                                    {{comment.playerSubjectComment}}...
+                                </p>
+                            </dd>
+                            <dd class="subject-pool-footer">
+                                <ul>
+                                    <li class="subject-input-left">
+                                        <ul
+                                            ng-init="openFaceDialog = false; recomment = false;"
+                                            ng-show="recomment">
+                                            <li class="subject-input-colum1">
+                                                <span class="top-triangle"><em></em></span>
+                                                <div class="input-comment">
+                                                    <textarea
+                                                            ng-model="publishReComment"
+                                                            ng-minLength="4"
+                                                            name="commentBox"
+                                                            id="commentBox"
+                                                            placeholder="别惜言，说点什么!!!"
+                                                            required></textarea>
+                                                </div>
+                                            </li>
+                                            <li class="subject-input-colum2">
+                                                <a class="publishFace" ng-click="openFaceDialog = !openFaceDialog;openPicDialog = false;">
+                                                    <i></i>
+                                                    <span>表情</span>
+                                                </a>
+                                                <small>|</small>
+                                                <div class="pop-dialog" ng-show="openFaceDialog">
+                                                    <span class="top-triangle"><em></em></span>
+                                                    <i class="icon-remove float-right" ng-click="openFaceDialog = !openFaceDialog"></i>
+                                                    <ul class="tabs">
+                                                        <li class="tab-title">
+                                                            <span>表情</span>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="dialog-content">
+                                                        表情系列
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="subject-input-colum3">
+                                                <label>同时转发到 :</label>
+                                                <select class="publishWithGroup" name="publishWithGroup">
+                                                    <option value="1">全部圈子</option>
+                                                    <option value="1">我的圈子</option>
+                                                    <option value="2">加入的圈子</option>
+                                                    <option value="3">我的好友圈</option>
+                                                </select>
+                                            </li>
+                                            <li class="float-right subject-input-colum4">
+                                                <button
+                                                        ng-class="{enabledBtn: publishReComment, disabledBtn: !publishReComment}"
+                                                        ng-disabled="{{!publishReComment}}">评伦</button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="subject-input-right">
+                                        <div class="subject-input-colum5">
+                                            <a href="javascript:void(0)">赞</a>
+                                            <a ng-click="recomment = !recomment" href="javascript:void(0)">回复</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                </li>
+                <li class="subject-panel-down-count">
+                    <span>还有: <small class="number-bg">{{value.playerSubjectCommentCount}}</small> 条评论，<a href="javascript: void(0)">查看更多</a></span>
+                </li>
+            </ul>
+
+            <ul
+                ng-show="replyItems[key]"
+                ng-init="{openFaceDialog: false}"
+                class="subject-panel-down">
+                <li class="subject-panel-down-top pool-subject-right">
+                    <ul>
+                        <li class="subject-widget">
+                            <div class="input-comment">
+                                <textarea
+                                        ng-model="publishComment"
+                                        ng-minLength="4"
+                                        name="commentBox"
+                                        id="commentBox"
+                                        placeholder="转发传播力量大!!!"
+                                        required></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="publishFace" ng-click="openFaceDialog = !openFaceDialog;openPicDialog = false;">
+                                <i></i>
+                                <span>表情</span>
+                            </a>
+                            <div class="pop-dialog faceDialog" ng-show="openFaceDialog">
+                                <span class="top-triangle"><em></em></span>
+                                <i class="icon-remove float-right" ng-click="openFaceDialog = !openFaceDialog"></i>
+                                <ul class="tabs">
+                                    <li class="tab-title">
+                                        <span>表情</span>
+                                    </li>
+                                </ul>
+                                <div class="dialog-content">
+                                    表情系列
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <small>|</small>
+                        </li>
+                        <li>
+                            <label>同时评论给 :</label>
+                        </li>
+                        <li>
+                            <input type="checkbox"/>
+                            {{value.playerUserName}}
+                        </li>
+                        <li class="float-right">
+                            <div class="publish-rang" ng-init="openPublishRang = false">
+                                <span ng-click="openPublishRang = !openPublishRang">全部圈子
+                                    <i ng-class="{triangleUp: openPublishRang,triangleDown: !openPublishRang}"></i>
+                                    <ul ng-show="openPublishRang" class="sorter-dropdown">
+                                        <li><a href="javascript:void(0)">全部圈子</a></li>
+                                        <li><a href="javascript:void(0)">我的圈子</a></li>
+                                        <li><a href="javascript:void(0)">加入的圈子</a></li>
+                                        <li><a href="javascript:void(0)">我的好友圈</a></li>
+                                    </ul>
+                                </span>
+                            </div>
+                            <button
+                                    ng-class="{enabledBtn: publishComment, disabledBtn: !publishComment}"
+                                    ng-disabled="{{!publishComment}}">转发</button>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="subject-panel-down-pool" ng-repeat="reply in replys">
+                    <div class="pool-subject-left">
+                        <img ng-src="{{reply.playerUserPhoto}}" />
+                    </div>
+                    <div class="pool-subject-right">
+                        <dl>
+                            <dt>
+                                <span>{{reply.playerUserName}}</span>
+                                <img ng-src="uploads/small-icon.png" />
+                            </dt>
+                            <dd class="subject-pool-text">
+                                <p>
+                                    {{reply.playerSubjectReply}}...
+                                </p>
+                            </dd>
+                            <dd class="subject-pool-footer">
+                                <ul>
+                                    <li class="subject-input-left">
+
+                                    </li>
+                                    <li class="subject-input-right">
+                                        <div class="subject-input-colum5">
+                                            <a href="javascript:void(0)">赞</a>
+                                            <a ng-click="recomment = !recomment" href="javascript:void(0)">转发</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                </li>
+                <li class="subject-panel-down-count">
+                    <span>还有: <small class="number-bg">{{value.playerSubjectReplyCount}}</small> 条转发，<a href="javascript: void(0)">查看更多</a></span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</article>
+
+<article ng-show="tabVisited[1]" id="partyPanel" class="allPanel">
+    <ul ng-controller="SubTabCtl" class="filter-widget">
+        <li class="grid-left">
+            <ul ng-init="visiter(4, 0)">
+                <li ng-class="{active: isVisited[0]}"><span ng-click="subNav('all');visiter(4, 0);">全部 <small class="number-bg">77</small></span></li>
+                <li ng-class="{active: isVisited[1]}"><span ng-click="subNav('invite');visiter(4, 1);">邀请 <small class="number-bg">22</small></span></li>
+                <li ng-class="{active: isVisited[2]}"><span ng-click="subNav('other');visiter(4, 2);">发起 <small class="number-bg">44</small></span></li>
+                <li ng-class="{active: isVisited[3]}"><span ng-click="subNav('other');visiter(4, 3);">参加 <small class="number-bg">11</small></span></li>
+            </ul>
+        </li>
+        <li ng-show="filted" class="grid-right sorter-widget">
+            <span
+                ng-click="choose(0)">类型
+
+                <i ng-class="{triangleUp: hadout[0],triangleDown: hadin[0]}"></i>
+                <ul ng-show="selected[0]" class="sorter-dropdown">
+                 <li><a href="#">不限</a></li>
+                 <li><a href="#">男约女</a></li>
+                 <li><a href="#">女约男</a></li>
+                 <li><a href="#">男约男</a></li>
+                 <li><a href="#">女约女</a></li>
+                </ul>
+            </span>
+            <small class="spliter">|</small>
+            <span ng-click="choose(1)">时间
+                <i ng-class="{triangleUp: hadout[1],triangleDown: hadin[1]}"></i>
+
+                <ul ng-show="selected[1]" class="sorter-dropdown">
+                    <li><a href="#">全部</a></li>
+                    <li><a href="#">今天</a></li>
+                    <li><a href="#">明天</a></li>
+                    <li><a href="#">一周后</a></li>
+                    <li><a href="#">一月后</a></li>
+                </ul>
+            </span>
+
+
+            <small class="spliter">|</small>
+            <span ng-click="choose(2)">定制
+                <i ng-class="{triangleUp: hadout[2],triangleDown: hadin[2]}"></i>
+
+                <ul ng-show="selected[2]" class="sorter-dropdown">
+                    <li><a href="#">不限</a></li>
+                    <li><a href="#">年龄</a></li>
+                    <li><a href="#">职业</a></li>
+                    <li><a href="#">是否抽烟</a></li>
+                    <li><a href="#">是否喝洒</a></li>
+                </ul>
+            </span>
+        </li>
+    </ul>
+    <ul class="loading-subject">
+        <li>有 1 个饭局发布, 查看最新饭局</li>
+    </ul>
+    <ul ng-controller="PartyCtl">
+        <li
+            ng-class="{inviteMale: gender,inviteFmale: !gender}"
+            ng-init="gender = party.playerPartyInviteMale"
+            class="content-pool"
+            ng-repeat="party in Parties">
+            <div class="pool-player-left">
+                <img ng-src="{{party.playerUserPhoto}}" />
+            </div>
+            <div class="pool-player-right">
+                <dl>
+                    <dt>
+                        <span class="party-title">{{party.playerPartyTitle}} [发起]</span>
+                        <span class="party-price">费用: <strong>我买单</strong></span>
+                        <span class="party-member">已报名: <strong>111</strong></span>
+                    </dt>
+                    <dd class="party-restaurant">
+                        <span class="party-restaurant-name">餐厅店名称</span>
+                        <span class="party-restaurant-location">餐厅地址</span>
+                    </dd>
+                    <dd class="party-time">
+                        <span class="start-time">时间:</span>
+                        <span class="end-time-count">报名截止还有:</span>
+                    </dd>
+                    <dd class="party-invite">
+                        <span class="party-invite-gender">邀请:</span>
+                        <span class="party-button">
+                            <button ng-show="open" ng-if="open = party.playerPartyIsOpen">立即报名</button>
+                            <span ng-show="close" ng-if="close = !party.playerPartyIsOpen" class="had-close">已结束</span>
+                        </span>
+                    </dd>
+                    <dd class="content-pool-text">
+                        <p>
+                            <span>注:</span>
+                            {{party.playerPartyComment}}...
+                            <span class="expand-button">全文</span>
+                        </p>
+                    </dd>
+                    <dd class="content-pool-footer">
+                        <span>发起人: {{party.playerUserName}} | 圈子名</span>
+                        <span>发  布: {{party.playerPublishDateTime}}</span>
+                        <a href="#">询问</a>
+                        <a href="#">收藏</a>
+                        <a href="#">赞 <small class="number-bg">{{party.playerPartyLaudCount}}</small></a>
+                        <a href="#">转发 <small class="number-bg">{{party.playerPartyRelayCount}}</small></a>
+                        <a href="#">评论 <small class="number-bg">{{party.playerPartyCommentCount}}</small></a>
+                    </dd>
+                </dl>
+            </div>
+        </li>
+    </ul>
+</article>
+
+<article ng-show="tabVisited[2]" id="menuPanel" class="allPanel">
+    <ul ng-controller="SubTabCtl" class="filter-widget">
+        <li class="grid-left">
+            <ul ng-init="visiter(4, 0)">
+                <li ng-class="{active: isVisited[0]}"><span ng-click="visiter(4, 0)">全部</span></li>
+                <li ng-class="{active: isVisited[1]}"><span ng-click="visiter(4, 1)">餐厅菜谱</span></li>
+                <li ng-class="{active: isVisited[2]}"><span ng-click="visiter(4, 2)">厨师菜谱</span></li>
+                <li ng-class="{active: isVisited[3]}"><span ng-click="visiter(4, 3)">个人菜谱</span></li>
+            </ul>
+        </li>
+        <li class="grid-right sorter-widget">
+            <span ng-click="choose(0)">时间
+                <i ng-class="{triangleUp: hadout[0],triangleDown: hadin[0]}"></i>
+
+                <ul ng-show="selected[0]" class="sorter-dropdown">
+                    <li><a href="#">全部</a></li>
+                    <li><a href="#">今天</a></li>
+                    <li><a href="#">昨天</a></li>
+                    <li><a href="#">一周前</a></li>
+                    <li><a href="#">一月前</a></li>
+                </ul>
+            </span>
+        </li>
+    </ul>
+    <ul class="loading-subject">
+        <li>有 1 个菜谱发布, 查看最新菜谱</li>
+    </ul>
+    <ul ng-controller="MenuCtl">
+        <li class="content-pool" ng-repeat="menu in Menus">
+            <div class="pool-player-left">
+                <img ng-src="{{menu.playerUserPhoto}}" />
+            </div>
+            <div class="pool-player-right">
+                <dl>
+                    <dt>
+                        <span>{{menu.playerMenuTitle}}</span>
+                    </dt>
+                    <dd class="menu-function">
+                        <ul>
+                            <li>功效: </li>
+                            <li ng-repeat="func in menu.playerMenuFunction">
+                                <small> [  </small>
+                                <span>{{func}}</span>
+                                <small>  ] </small>
+                            </li>
+                        </ul>
+                    </dd>
+                    <dd class="menu-helfth">
+                        <ul>
+                            <li>营养: </li>
+                            <li ng-repeat="helfth in menu.playerMenuHelfth">
+                                <small> [  </small>
+                                <span>{{helfth}}</span>
+                                <small>  ] </small>
+                            </li>
+                        </ul>
+                    </dd>
+                    <dd class="content-pool-text">
+                        <p>
+                            {{menu.playerMenuContent}}...
+                            <span class="expand-button">全文</span>
+                        </p>
+
+                    </dd>
+                    <dd class="content-pool-pic">
+                        <img ng-src="{{menu.playerMenuPhoto.url}}" />
+                    </dd>
+                    <dd class="content-pool-footer">
+                        <span>发布: {{menu.playerPublishDateTime}}</span>
+                        <span>来自: {{menu.playerUserName}}</span>
+                        <a href="#">收藏</a>
+                        <a href="#">赞 <small class="number-bg">{{menu.playerMenuLaudCount}}</small></a>
+                        <a href="#">转发 <small class="number-bg">{{menu.playerMenuRelayCount}}</small></a>
+                        <a href="#">评论 <small class="number-bg">{{menu.playerMenuCommentCount}}</small></a>
+                    </dd>
+                </dl>
+            </div>
+        </li>
+    </ul>
+</article>
+
+<article ng-show="tabVisited[3]" id="discountPanel" class="allPanel">
+    <ul ng-controller="SubTabCtl" class="filter-widget">
+        <li class="grid-left">
+            <ul ng-init="visiter(6, 0)">
+                <li ng-class="{active: isVisited[0]}"><span ng-click="visiter(6, 0);">全部</span></li>
+                <li ng-class="{active: isVisited[1]}"><span ng-click="visiter(6, 1);">代金券</span></li>
+                <li ng-class="{active: isVisited[2]}"><span ng-click="visiter(6, 2);">折扣券</span></li>
+                <li ng-class="{active: isVisited[3]}"><span ng-click="visiter(6, 3);">试吃券</span></li>
+                <li ng-class="{active: isVisited[4]}"><span ng-click="visiter(6, 4);">赠送券</span></li>
+                <li ng-class="{active: isVisited[5]}"><span ng-click="visiter(6, 5);">抽奖券</span></li>
+            </ul>
+        </li>
+        <li ng-show="filted" class="grid-right sorter-widget">
+            <span
+                    ng-click="choose(0)">类型
+
+                <i ng-class="{triangleUp: hadout[0],triangleDown: hadin[0]}"></i>
+                <ul ng-show="selected[0]" class="sorter-dropdown">
+                    <li><a href="#">全部</a></li>
+                    <li><a href="#">中式餐厅</a></li>
+                    <li><a href="#">法式餐厅</a></li>
+                    <li><a href="#">意式餐厅</a></li>
+                    <li><a href="#">俄国餐厅</a></li>
+                    <li><a href="#">日式餐厅</a></li>
+                    <li><a href="#">韩式餐厅</a></li>
+                    <li><a href="#">其它餐厅</a></li>
+                </ul>
+            </span>
+            <small class="spliter">|</small>
+            <span ng-click="choose(1)">时间
+                <i ng-class="{triangleUp: hadout[1],triangleDown: hadin[1]}"></i>
+
+                <ul ng-show="selected[1]" class="sorter-dropdown">
+                    <li><a href="#">全部</a></li>
+                    <li><a href="#">今天内</a></li>
+                    <li><a href="#">明天内</a></li>
+                    <li><a href="#">一周内</a></li>
+                    <li><a href="#">一月内</a></li>
+                </ul>
+            </span>
+        </li>
+    </ul>
+    <ul class="loading-subject">
+        <li>有 1 个优惠发布, 查看最新优惠活动</li>
+    </ul>
+    <ul ng-controller="DiscountCtl">
+        <li class="content-pool" ng-repeat="group in Groups">
+            <div class="pool-player-left">
+                <img ng-src="{{group.playerGroupPhoto}}" />
+            </div>
+            <div class="pool-player-right">
+                <dl>
+                    <dt>
+                        <span>{{group.playerGroupName}}</span>
+                        <img ng-src="{{group.playerGroupIcon}}" />
+                        <span class="event-discount2">
+                            {{group.playerGroupEventDiscount}}
+                        </span>
+                        <smal class="event-discount3"></smal>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li class="restaurant-area">
+                                <ul>
+                                    <li class="restaurant-event">
+                                        <span class="event-name">活动: {{group.playerGroupEventName}}</span>
+                                        <span class="discount-count" title="本次活支优惠券已使用次数">已使用: {{group.playerGroupEventJoinCount}} 次</span>
+                                    </li>
+                                    <li>
+                                        <span class="restaurant-name">{{group.playerGroupRestaurantName}}</span>
+                                        <span class="discount-type">类型: {{group.playerGroupDiscountType}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="event-date">日期: {{group.playerGroupEventDateStart}} 至 {{group.playerGroupEventDateEnd}}</span>
+                                        <span class="event-join">获取: <button>立即领取</button></span>
+                                    </li>
+                                    <li>
+                                        <span class="event-rule">活动规则: <button>查看</button></span>
+                                        <span class="event-map">地图: <button>查看</button></span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="restaurant-photo">
+                                <span><img ng-src="{{group.playerGroupRestaurantPhoto}}" style="width: 106px; height: 126px; " /></span>
+                            </li>
+                        </ul>
+                    </dd>
+                    <dd class="content-pool-text event-detail">
+                        <p>
+                            <sapn>活动说明:</sapn>
+                            {{group.playerGroupEventDetail}}...
+                            <span class="expand-button">全文</span>
+                        </p>
+                    </dd>
+                    <dd class="content-pool-footer">
+                        <span>发布: {{group.playerPublishDateTime}}</span>
+                        <span>来自: {{group.PlayerFromGroupMemberName}}</span>
+
+                        <a href="#">询问</a>
+                        <a href="#">赞</a>
+                        <a href="#">转发 <small class="number-bg">{{group.playerGroupEventRelayCount}}</small></a>
+                        <a href="#">评论 <small class="number-bg">{{group.playerGroupEventCommentCount}}</small></a>
+                    </dd>
+                </dl>
+            </div>
+        </li>
+    </ul>
+</article>
+
+
+<!--div class="reply-box" ng-show="replyDialog">
+    <div class="reply-panel pop-dialog">
+        <i class="icon-remove float-right" ng-click="openReplyDialog()"></i>
+
+        <h2>转发话题</h2>
+        <h1>转发到:</h1>
+
+        <ul class="tabs">
+            <li class="tab-title">
+                <span>我的圈子</span>
+            </li>
+            <li class="tab-title">
+                <span>加入的圈子</span>
+            </li>
+            <li class="tab-title">
+                <span>我的好友圈</span>
+            </li>
+        </ul>
+        <div class="dialog-content">
+            <div class="ref-subject">
+                <p>
+                    @UserName: 话题原文内容话题原文内容话题原文内容话题原文内容话题原文内容话题原文内容话题原文内容...
+                    <span class="expand-button">全文</span>
+                </p>
+            </div>
+            <div class="input-reply">
+                <textarea
+                        ng-model="publishReComment"
+                        ng-minLength="4"
+                        name="commentBox"
+                        id="commentBox"
+                        placeholder="转发传播力量大!!!"
+                        required></textarea>
+            </div>
+            <div>
+
+                    <a class="publishFace" ng-click="openFaceDialog = !openFaceDialog;openPicDialog = false;">
+                        <i></i>
+                        <span>表情</span>
+                    </a>
+                    <small>|</small>
+                    <div class="pop-dialog" ng-show="openFaceDialog">
+                        <span class="top-triangle"><em></em></span>
+                        <i class="icon-remove float-right" ng-click="openFaceDialog = !openFaceDialog"></i>
+                        <ul class="tabs">
+                            <li class="tab-title">
+                                <span>表情</span>
+                            </li>
+                        </ul>
+                        <div class="dialog-content">
+                            表情系列
+                        </div>
+                    </div>
+
+
+                    <label>同时转发到 :</label>
+                    <select class="publishWithGroup" name="publishWithGroup">
+                        <option value="1">全部圈子</option>
+                        <option value="1">我的圈子</option>
+                        <option value="2">加入的圈子</option>
+                        <option value="3">我的好友圈</option>
+                    </select>
+
+
+                    <button
+                            ng-class="{enabledBtn: publishReComment, disabledBtn: !publishReComment}"
+                            ng-disabled="{{!publishReComment}}">评伦</button>
+
+            </div>
+        </div>
+    </div>
+</div-->

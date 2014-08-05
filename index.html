@@ -1,6 +1,6 @@
 <!doctype html>
-<html xmlns:ng="http://angularjs.org">
-  <head>
+<html ng-app="haochiquanApp" xmlns:ng="http://angularjs.org">
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -9,9 +9,11 @@
     <script src="scripts/common/angular_for_IE.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/index.css">
-  </head>
-  <body ng-app="haochiquanApp" ng-controller="TemplateCtl">
+    <link rel="stylesheet" href="styles/browork/panels/global/header.css"/>
+    <link rel="stylesheet" href="styles/browork/pages/index.css">
+    <link rel="stylesheet" href="styles/browork/panels/global/footer.css"/>
+</head>
+<body ng-controller="TemplateCtl">
     <div class="container" ng-controller="PanelsCtl">
         <header id="Header" ng-include="template.header">
         </header>
@@ -34,17 +36,8 @@
     <!-- endbower -->
 
 
-
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/templateCtl.js"></script>
-    <script src="scripts/controllers/panelsCtl.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/tabCtl.js"></script>
-    <script src="scripts/controllers/headerCtl.js"></script>
-    <script src="scripts/controllers/publishCtl.js"></script>
-    <script src="scripts/controllers/subjectCtl.js"></script>
-    <script src="scripts/controllers/PartyCtl.js"></script>
-    <script src="scripts/controllers/menuCtl.js"></script>
-    <script src="scripts/controllers/discountCtl.js"></script>
+    <script src="scripts/controllers/global/headerCtrl.js"></script>
+    <script src="scripts/controllers/pages/indexCtrl.js"></script>
 </body>
 </html>

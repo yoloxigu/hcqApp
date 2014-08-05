@@ -1,10 +1,11 @@
-
 @charset "UTF-8";
 
 @import
-        "common/basic",
+        "browork/framework/basic",
+        "browork/framework/mixin",
         "browork/components/reset",
         "browork/components/grid",
         "browork/components/top-bar",
+        "browork/components/global",
         "browork/icons/ui";
 

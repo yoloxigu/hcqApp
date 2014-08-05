@@ -1,0 +1,11 @@
+#subjectPanel ul li.content-pool {
+  padding: 0;
+  list-style-type: none; }
+  #subjectPanel ul li.content-pool:hover {
+    background-color: #fafafa; }
+  #subjectPanel ul li.content-pool .pool-subject-left {
+    float: left;
+    padding: 15px 0 0 15px; }
+  #subjectPanel ul li.content-pool .pool-subject-right {
+    margin-left: 85px;
+    padding: 15px 15px 0 0; }

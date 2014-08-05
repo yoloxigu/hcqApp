@@ -1,0 +1,117 @@
+#partyPanel {
+  ul {
+    li {
+      .pool-player-right {
+        dl {
+          dt {
+            .party-title {
+              display: inline-block;
+              width: 49%;
+              text-align: left;
+            }
+            .party-price {
+              display: inline-block;
+              width: 25%;
+              text-align: left;
+            }
+
+            .party-member {
+              display: inline-block;
+              width: 25%;
+              text-align: right;
+            }
+          }
+
+          .party-restaurant, .party-time, .party-invite {
+            margin-top: 15px;
+            ul {
+              list-style-type: none;
+              li {
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
+
+              }
+            }
+          }
+
+          .party-restaurant {
+            margin-top: 20px;
+            .party-restaurant-name {
+              display: inline-block;
+              width: 49%;
+              text-align: left;
+            }
+            .party-restaurant-location {
+              display: inline-block;
+              width: 50%;
+              text-align: left;
+            }
+          }
+
+          .party-time {
+            .start-time {
+              display: inline-block;
+              width: 49%;
+              text-align: left;
+            }
+            .end-time-count {
+              display: inline-block;
+              width: 50%;
+              text-align: left;
+            }
+          }
+
+          .party-invite {
+            .party-invite-gender {
+              display: inline-block;
+              width: 49%;
+              text-align: left;
+
+            }
+
+            .party-button {
+              display: inline-block;
+              width: 50%;
+              text-align: right;
+              button {
+                width: 100px;
+                height: 26px;
+                line-height: 26px;
+              }
+              .had-close {
+                width: 100px;
+                height: 26px;
+                line-height: 26px;
+                display: inline-block;
+                border: 1px dashed #c6c6c6;
+
+              }
+            }
+          }
+
+          .content-pool-text {
+            margin-bottom: 20px;
+          }
+        }
+      }
+
+    }
+
+    .inviteMale {
+      border-top: 3px solid rgba(112, 244, 244, 0.9);
+      &:hover {
+        background: rgba(112, 244, 244, 0.1);
+
+      }
+    }
+
+    .inviteFmale {
+      border-top: 3px solid rgba(255, 168, 194, 0.9);
+      &:hover {
+        background: rgba(255, 168, 194, 0.1);
+
+      }
+    }
+  }
+}
