@@ -41,51 +41,51 @@
     <ul ng-controller="SubjectCtl">
         <li class="content-pool" ng-repeat="(key, value) in subjects">
             <div class="pool-player-left">
-                <img ng-src="{{value.playerUserPhoto}}" />
+                <img ng-src="{{value.user_portrait}}" />
             </div>
             <div class="pool-player-right">
                 <dl>
                     <dt>
-                        <span>{{value.playerUserName}}</span>
-                        <img ng-src="uploads/small-icon.png" />
+                        <span>{{value.user_name}}</span>
+                        <img ng-src="{{value.user_icons}}" />
                     </dt>
                     <dd class="content-pool-title">
-                        <h4>{{value.playerSubjectTitle}}</h4>
+                        <h4>{{value.subject_title}}</h4>
                     </dd>
                     <dd class="content-pool-text">
                         <p>
-                            {{value.playerSubjectContent}}...
+                            {{value.subject_content}}...
                             <span class="expand-button">全文</span>
                         </p>
                     </dd>
                     <dd class="content-pool-pic">
                         <ul>
-                            <li ng-repeat="pic in value.playerSubjectPhoto"><img ng-src="{{pic.url}}" /></li>
+                            <li ng-repeat="pic in value.subject_pictrues"><img ng-src="{{pic}}" /></li>
                         </ul>
                     </dd>
                     <dd class="content-pool-footer">
-                        <span>发布: {{value.playerPublishDateTime}}</span>
-                        <span>来自: {{value.playerFromGroup}}</span>
+                        <span>发布: {{value.publish_date_time}}</span>
+                        <span>来自: {{value.publish_from_group}}</span>
                         <a
-                            ng-click="value.playerSubjectCollection = changeCollection(value.playerSubjectCollection)"
+                            ng-click="value.subject_is_collection = changeCollection(value.subject_is_collection)"
                             href="javascript:void(0)">
-                            <ng-pluralize count="value.playerSubjectCollection"
+                            <ng-pluralize count="value.subject_is_collection"
                                           when="{
                                           '0': '收藏',
                                           '1': '取消收藏'}">
                             </ng-pluralize>
                         </a>
                         <a
-                            ng-click="value.playerSubjectLaudCount = changeLaud(key, subjects.length, value.playerSubjectLaudCount)"
+                            ng-click="value.subject_laud_count = changeLaud(key, subjects.length, value.subject_laud_count)"
                             href="javascript:void(0)">赞
-                            <small class="number-bg">{{value.playerSubjectLaudCount}}</small>
+                            <small class="number-bg">{{value.subject_laud_count}}</small>
                         </a>
                         <a ng-click="changeSubjectPanel(key, subjects.length, 'reply');" href="javascript:void(0)">转发
-                            <small class="number-bg">{{value.playerSubjectReplyCount}}</small>
+                            <small class="number-bg">{{value.subject_reply_count}}</small>
                             <span ng-show="replyItems[key]" class="top-triangle top-triangle-comment"><em></em></span>
                         </a>
                         <a ng-click="changeSubjectPanel(key, subjects.length, 'comment');" href="javascript:void(0)">评论
-                            <small class="number-bg">{{value.playerSubjectCommentCount}}</small>
+                            <small class="number-bg">{{value.subject_comment_count}}</small>
                             <span ng-show="commentItems[key]" class="top-triangle top-triangle-comment"><em></em></span>
                         </a>
                     </dd>

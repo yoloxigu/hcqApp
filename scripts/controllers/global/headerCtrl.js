@@ -1,7 +1,7 @@
 'use strict';
 angular.module('haochiquanApp')
     .factory('UserAccount', function($resource) {
-        return $resource('http://haochiquan.com/Api/UserInfo/read/', {}, {
+        return $resource('http://haochiquan.com/Api/UserInfo/read/name/wfwalking', {}, {
             jsonpquery: {
                 method: 'JSONP',
                 params: {callback: 'JSON_CALLBACK'},

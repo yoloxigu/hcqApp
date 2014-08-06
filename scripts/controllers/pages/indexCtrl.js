@@ -156,177 +156,17 @@ angular.module('haochiquanApp')
             }
         };
     })
-    .controller('SubjectCtl', function ($scope) {
-        $scope.subjects = [
-            {
-                playerUserName: 'UserName one',
-                playerUserPhoto: 'uploads/users/u140.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 one',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u73.jpg'},{url:'uploads/contents/u75.jpg'},{url:'uploads/contents/u77.jpg'},{url:'uploads/contents/u79.jpg'},{url:'uploads/contents/u81.jpg'},{url:'uploads/contents/u83.jpg'}],
-                playerPublishDateTime: '2014-07-10 12:10',
-                playerFromGroup: '圈子名称 noe',
-                playerSubjectCommentCount: '7',
-                playerSubjectReplyCount: '7',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '7'
-            },
-            {
-                playerUserName: 'UserName two',
-                playerUserPhoto: 'uploads/users/u155.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 two',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u79.jpg'},{url:'uploads/contents/u81.jpg'},{url:'uploads/contents/u83.jpg'}],
-                playerPublishDateTime: '2014-07-10 11:10',
-                playerFromGroup: '圈子名称 two',
-                playerSubjectCommentCount: '99999',
-                playerSubjectReplyCount: '99999',
-                playerSubjectCollection: '0',
-                playerSubjectLaudCount: '99999'
-            },
-            {
-                playerUserName: 'UserName three',
-                playerUserPhoto: 'uploads/users/u533.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 three',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u199.jpg'},{url:'uploads/contents/u277.jpg'},{url:'uploads/contents/u279.jpg'},{url:'uploads/contents/u281.jpg'}],
-                playerPublishDateTime: '2014-07-10 10:10',
-                playerFromGroup: '圈子名称 three',
-                playerSubjectCommentCount: '99',
-                playerSubjectReplyCount: '999',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '9999'
-            },
-            {
-                playerUserName: 'UserName four',
-                playerUserPhoto: 'uploads/users/u473.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 four',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u283.jpg'},{url:'uploads/contents/u437.jpg'},{url:'uploads/contents/u495.jpg'}],
-                playerPublishDateTime: '2014-07-10 09:10',
-                playerFromGroup: '圈子名称 four',
-                playerSubjectCommentCount: '11',
-                playerSubjectReplyCount: '11',
-                playerSubjectCollection: '0',
-                playerSubjectLaudCount: '11'
-            },
-            {
-                playerUserName: 'UserName five',
-                playerUserPhoto: 'uploads/users/u475.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 five',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u283.jpg'},{url:'uploads/contents/u437.jpg'},{url:'uploads/contents/u495.jpg'}],
-                playerPublishDateTime: '2014-07-10 08:10',
-                playerFromGroup: '圈子名称 five',
-                playerSubjectCommentCount: '22',
-                playerSubjectReplyCount: '22',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '22'
-            },
-            {
-                playerUserName: 'UserName five',
-                playerUserPhoto: 'uploads/users/u475.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 five',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u283.jpg'},{url:'uploads/contents/u437.jpg'},{url:'uploads/contents/u495.jpg'}],
-                playerPublishDateTime: '2014-07-10 08:10',
-                playerFromGroup: '圈子名称 five',
-                playerSubjectCommentCount: '22',
-                playerSubjectReplyCount: '22',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '22'
-            },
-            {
-                playerUserName: 'UserName five',
-                playerUserPhoto: 'uploads/users/u475.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 five',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u283.jpg'},{url:'uploads/contents/u437.jpg'},{url:'uploads/contents/u495.jpg'}],
-                playerPublishDateTime: '2014-07-10 08:10',
-                playerFromGroup: '圈子名称 five',
-                playerSubjectCommentCount: '22',
-                playerSubjectReplyCount: '22',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '22'
-            },
-            {
-                playerUserName: 'UserName five',
-                playerUserPhoto: 'uploads/users/u475.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 five',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u283.jpg'},{url:'uploads/contents/u437.jpg'},{url:'uploads/contents/u495.jpg'}],
-                playerPublishDateTime: '2014-07-10 08:10',
-                playerFromGroup: '圈子名称 five',
-                playerSubjectCommentCount: '22',
-                playerSubjectReplyCount: '22',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '22'
-            },
-            {
-                playerUserName: 'UserName five',
-                playerUserPhoto: 'uploads/users/u475.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 five',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u283.jpg'},{url:'uploads/contents/u437.jpg'},{url:'uploads/contents/u495.jpg'}],
-                playerPublishDateTime: '2014-07-10 08:10',
-                playerFromGroup: '圈子名称 five',
-                playerSubjectCommentCount: '22',
-                playerSubjectReplyCount: '22',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '22'
-            },
-            {
-                playerUserName: 'UserName five',
-                playerUserPhoto: 'uploads/users/u475.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 five',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u283.jpg'},{url:'uploads/contents/u437.jpg'},{url:'uploads/contents/u495.jpg'}],
-                playerPublishDateTime: '2014-07-10 08:10',
-                playerFromGroup: '圈子名称 five',
-                playerSubjectCommentCount: '22',
-                playerSubjectReplyCount: '22',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '22'
-            },
-            {
-                playerUserName: 'UserName five',
-                playerUserPhoto: 'uploads/users/u475.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 five',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u283.jpg'},{url:'uploads/contents/u437.jpg'},{url:'uploads/contents/u495.jpg'}],
-                playerPublishDateTime: '2014-07-10 08:10',
-                playerFromGroup: '圈子名称 five',
-                playerSubjectCommentCount: '22',
-                playerSubjectReplyCount: '22',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '22'
-            },
-            {
-                playerUserName: 'UserName five',
-                playerUserPhoto: 'uploads/users/u475.png',
-                playerUserIcon: 'uploads/small-icon.png',
-                playerSubjectTitle: '话题标题 five',
-                playerSubjectContent: '话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文话题内容正文',
-                playerSubjectPhoto: [{url:'uploads/contents/u283.jpg'},{url:'uploads/contents/u437.jpg'},{url:'uploads/contents/u495.jpg'}],
-                playerPublishDateTime: '2014-07-10 08:10',
-                playerFromGroup: '圈子名称 five',
-                playerSubjectCommentCount: '22',
-                playerSubjectReplyCount: '22',
-                playerSubjectCollection: '1',
-                playerSubjectLaudCount: '22'
-            }
-        ];
+    .controller('SubjectCtl', ['$scope', 'Subject', '$resource' ,function ($scope, Subject, $resource) {
+
+        //$scope.subjects = Subject.jsonpquery();
+
+        var ajax = $resource('http://haochiquan.com/Api/Subject/read/account_id/4', {}, {
+            jsonpQuery: {
+                method: 'JSONP',
+                params: {callback: 'JSON_CALLBACK'},
+                isArray: true
+            }});
+        $scope.subjects = ajax.jsonpQuery();
 
         $scope.comments = [
             {
@@ -383,7 +223,12 @@ angular.module('haochiquanApp')
                         if ('comment' === panel) {
                             $scope.commentItems.push(true);
                         } else {
+                            $scope.commentItems.push(false);
+                        }
+                        if ('reply' === panel) {
                             $scope.replyItems.push(true);
+                        } else {
+                            $scope.replyItems.push(false);
                         }
                     } else {
                         $scope.commentItems.push(false);
@@ -424,32 +269,24 @@ angular.module('haochiquanApp')
             }
         };
 
-        $scope.changeLaud = function(index, length, value) {
+        $scope.changeLaud = function(index, length, val) {
             if (0 === $scope.flags.length) {
                 for (var i = 0; i < length; i++) {
-                    if (i === index) {
-                        $scope.flags.push(true);
-                    } else {
-                        $scope.flags.push(false);
-                    }
+                    $scope.flags.push(false);
                 }
-            } else {
-                $scope.flags.forEach(function(value, key) {
-                    if (key === index && $scope.flags[key] === false) {
-                        $scope.flags[key] = !$scope.flags[key];
-                    } else {
-                        $scope.flags[key] = false;
-                    }
-                });
             }
 
-            if ($scope.flags[index] === true) {
-                return parseInt(value) + 1;
+            if ($scope.flags[index] === false) {
+                $scope.flags[index] = true;
+                return parseInt(val) + 1;
             } else {
-                return parseInt(value) - 1;
+                $scope.flags[index] = false;
+                return parseInt(val) - 1;
             }
         };
-    })
+
+
+    }])
     .controller('PartyCtl', function ($scope) {
         $scope.Parties = [
             {
